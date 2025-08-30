@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oro · Copilote</title>
+  <title>Nevo · Copilote</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"></script>
   <style>
@@ -68,20 +68,21 @@
     #chat {
       flex: 1;
       overflow-y: auto;
-      padding: 1.5rem;
+      padding: 1rem;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 0.5rem;
       background: var(--bg);
     }
 
     .message {
       max-width: 100%;
-      padding: 1rem;
+      padding: 0.75rem 1rem;
       border-radius: var(--radius);
       line-height: 1.6;
       word-wrap: break-word;
       font-size: 0.95rem;
+      margin-bottom: 0.75rem;
       animation: fadeIn 0.3s ease-out;
       opacity: 0;
     }
@@ -109,18 +110,25 @@
       white-space: pre-wrap;
     }
 
-    .message-content p {
-      margin: 0 0 0.8rem 0;
+    /* Réinitialisation des marges Markdown */
+    .message-content p,
+    .message-content ul,
+    .message-content ol {
+      margin: 0 0 0.5rem 0;
+    }
+
+    /* Supprime la marge inférieure du dernier élément */
+    .message-content > *:last-child {
+      margin-bottom: 0 !important;
     }
 
     .message-content ul,
     .message-content ol {
-      margin: 0.5rem 0 0.8rem 1.5rem;
-      padding: 0;
+      padding-left: 1.2rem;
     }
 
     .message-content li {
-      margin: 0.2rem 0;
+      margin: 0.1rem 0;
     }
 
     .message-content a {
@@ -145,13 +153,9 @@
       border-radius: var(--radius);
       padding: 1rem;
       overflow-x: auto;
-      margin: 0.8rem 0;
+      margin: 0.5rem 0;
       font-size: 0.85rem;
       position: relative;
-    }
-
-    pre code {
-      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
     }
 
     pre::after {
@@ -208,13 +212,13 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(5px); }
+      from { opacity: 0; transform: translateY(2px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 600px) {
       #chat {
-        padding: 1rem;
+        padding: 0.75rem;
       }
       form {
         padding: 0.75rem;
@@ -224,7 +228,7 @@
 </head>
 <body>
   <header>
-    <div class="logo">Oro · Copilote</div>
+    <div class="logo">Nevo · Copilote</div>
     <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
   </header>
   <div id="chat"></div>
@@ -301,7 +305,7 @@
               {
                 role: "system",
                 content: `
-                Tu es Oro, un copilote naturel et direct.
+                Tu es Nevo, un copilote naturel et direct.
                 - Réponds avec honnêteté, clarté et concision.
                 - Utilise le Markdown pour structurer tes réponses (listes, gras, liens, etc.).
                 - Pour le code, utilise toujours des blocs avec le langage spécifié (ex: \`\`\`python).
